@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Bring Up The Review Please</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -63,8 +63,8 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href = "#" onclick="popupwindow('add_rest.php','Add Restaurant',400,400);">Add Restaurant</a></li>
-            <li><a href="#">Remove Restaurant</a></li>
+            <li><a href = "#" onclick="popup('add_rest.html','Add Restaurant',400,400);">Add Restaurant</a></li>
+            <li><a href = "#" onclick="popup('remove_rest.html','Remove Restaurant',200,200);">Remove Restaurant</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Add Review</a></li>
@@ -81,7 +81,6 @@
                   <th>Name</th>
                   <th>Rating</th>
                   <th>Tags</th>
-                  <th>Address</th>
                 </tr>
               </thead>
               <tbody>
@@ -95,9 +94,9 @@
 						echo "<tr><td>" . $row['ID'] . "</td>
 							<td>" . $row['Name'] . "</td>
 							<td>" . $row['Rating'] . "</td>
-							<td></td>
-							<td>" . $row['Address'] . "</td></tr>";
+							<td></td></tr>";
 					}
+					mysqli_close($mysqli);
 				?>
               </tbody>
             </table>
