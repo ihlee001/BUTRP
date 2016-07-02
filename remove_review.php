@@ -3,8 +3,8 @@
 	if ($mysqli->connect_errno) {
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
-	$query = mysqli_query($mysqli, "INSERT INTO restaurant (ID, Name) VALUES ('".$_POST['id']."', '".$_POST['name']."')");
+	$query = mysqli_query($mysqli, "DELETE FROM review WHERE review.RestaurantID = '".$_POST['restid']."' AND review.UserID = '".$_POST['userid']."'");
 	mysqli_close($mysqli);
 	if($query){echo "<script>self.close();</script>";}
-	else{echo "Failed to insert Restaurant";}
+	else{echo "Failed to remove Restaurant";}
 ?>

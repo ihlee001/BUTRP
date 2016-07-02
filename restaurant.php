@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" onclick="window.location.reload()">Bring Up The Review Please</a>
+          <a class="navbar-brand" href="index.php" >Bring Up The Review Please</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -74,32 +74,27 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
+                  <th>Restaurant ID</th>
+                  <th>User ID</th>
                   <th>Rating</th>
-                  <th>Tags</th>
+                  <th>Review</th>
                 </tr>
               </thead>
               <tbody>
 				<?php 
+					$id = $_GET['id'];
 					$mysqli = mysqli_connect("127.0.0.1:3306", "root", "","restaurants");
 					if ($mysqli->connect_errno) {
 						echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 					}
-					$query="SELECT * FROM restaurant";
+					$query="SELECT * FROM review WHERE review.RestaurantID = '".$id."'";
 					$results = mysqli_query($mysqli, $query);
-					
+
 					while ($row = mysqli_fetch_array($results)) {
-						$avgquery="SELECT AVG(Rating) AS AverageReview FROM review WHERE review.RestaurantID = '".$row['ID']."'";
-						$average_array = mysqli_query($mysqli, $avgquery);
-						$average = mysqli_fetch_array($average_array);
-						$rating = $average['AverageReview'];
-						if($rating === null) $rating = 0;
-						$id = $row['ID'];
-						echo "<tr><td>" . $id . "</td>
-							<td>". '<a href="restaurant.php?id='.urlencode($id).'">' . $row['Name'] . "</a></td>
-							<td>" . number_format((float)$rating, 1, '.', '') . "</td>
-							<td></td></tr>";
+						echo "<tr><td>" . $row['RestaurantID'] . "</td>
+							<td>" . $row['UserID'] . "</td>
+							<td>" . $row['Rating'] . "</td>
+							<td><pre>" . $row['Review'] . "</pre></td></tr>";
 					}
 					mysqli_close($mysqli);
 				?>
