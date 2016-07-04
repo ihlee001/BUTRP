@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<form action="add_review.php" method="post" onsubmit="window.opener.location.reload()">
 		Restaurant ID:<br>
 		<input type="number" name="restid"><br>
@@ -7,8 +8,14 @@
 		<input type="number" name="userid"><br>
 		Rating:<br>
 		<input type="number" name="rating"><br>
-		Review:<br>
-		<textarea name="review" rows="20" cols="70"></textarea><br><br>
-		<input type="submit">
+		Reviewasdfas:<br>
+		<textarea name="review" rows="20" cols="70"></textarea><br>
+		Receipt:<br>
+		<input type="file" onchange="read_image_text(this);"><br><br>
+		<input type="submit"><br><br>
+		<img id="receipt" src="" >
 	</form>
+
+	<script src="js/scripts.js"></script>
+	<script src="js/ocrad.js"></script>
 </html>
