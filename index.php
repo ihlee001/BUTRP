@@ -67,6 +67,7 @@
           <ul class="nav nav-sidebar">
             <li><a href = "#" onclick="popup('add_review.html','Add Review',1200,600);">Add Review</a></li>
             <li><a href = "#" onclick="popup('remove_review.html','Add Review',400,400);">Remove Review</a></li>
+			<li><a href = "#" onclick="sentiment_analysis();">Test</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

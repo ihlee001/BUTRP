@@ -9,6 +9,25 @@ function refresh_close(){
 	window.close();
 }
 
+function sentiment_analysis(){
+	var http = new XMLHttpRequest();
+	var url = "http://sentiment.vivekn.com/api/text/";
+	var params = "txt=best day hello haha  omg this is so much fun";
+	
+	http.open("POST", url, true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) {
+			var json = JSON.parse(http.responseText);
+			console.log(json.result.sentiment + ", " + json.result.confidence);
+		}
+		
+	}
+	http.send(params);
+}
+
 function read_image_text(input){
 	if(input.files && input.files[0]){
 		var reader = new FileReader();
@@ -37,5 +56,4 @@ function read_image_text(input){
 		// var letters = OCRAD(context);
 		// window.alert(letters);
 	// });
-	
 }
