@@ -55,6 +55,7 @@ function read_image_text(input){
 			context.drawImage(img, 0, 0);
 			var letters = OCRAD(context);
 			letters = letters.trim().toLowerCase();
+			window.alert(letters);
 			var analysis = document.getElementById('analysis');
 			if(current_name.toLowerCase().trim() == letters){
 				analysis.value = parseFloat(analysis.value) + 33.0;
