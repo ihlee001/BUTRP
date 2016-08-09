@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<form action="add_review.php" method="post" onsubmit="window.opener.location.reload()">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<form action="add_review.php" method="post" onsubmit="window.opener.location.reload();">
 		Restaurant ID:<br>
-		<input type="number" name="restid"><br>
+		<input type="number" name="restid" id="restid"><br><br>
 		User ID:<br>
-		<input type="number" name="userid"><br>
+		<input type="number" name="userid"><br><br>
 		Rating:<br>
-		<input type="number" name="rating"><br>
-		Reviewasdfas:<br>
-		<textarea name="review" rows="20" cols="70"></textarea><br>
+		<input type="number" name="rating"><br><br>
+		Review:<br>
+		<textarea id="texts" name="review" rows="20" cols="70"></textarea><br>
+		<button id = "button" type="button" onclick="sentiment_analysis(this)" value="null">Rate Review</button><br><br>
+		<input type="hidden" name="analysis" value="0" id="analysis">
 		Receipt:<br>
 		<input type="file" onchange="read_image_text(this);"><br><br>
 		<input type="submit"><br><br>

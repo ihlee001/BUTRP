@@ -1,25 +1,3 @@
-var current_id = localStorage.getItem("current_id");
-var current_name = localStorage.getItem("current_name");
-
-function popup(url, title, w, h) {
-	var left = (screen.width/2)-(w/2);
-	var top = (screen.height/2)-(h/2);
-	return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-} 
-
-function popup_review(url, title, w, h, id, name) {
-	var left = (screen.width/2)-(w/2);
-	var top = (screen.height/2)-(h/2);
-	localStorage.setItem("current_id", id);
-	localStorage.setItem("current_name", name);
-	return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-} 
-
-function refresh_close(){
-	window.opener.location.reload(true);
-	window.close();
-}
-
 function sentiment_analysis(caller){
 	var user_review = document.getElementById('texts').value;
 	var http = new XMLHttpRequest();
@@ -34,8 +12,7 @@ function sentiment_analysis(caller){
 			// console.log(json.result.sentiment + ", " + json.result.confidence);
 			caller.value = json.result.sentiment + ", " + json.result.confidence;
 			var analysis = document.getElementById("analysis");
-			analysis.value = parseFloat(analysis.value) + parseFloat(json.result.confidence);
-			console.log(analysis.value);
+			analysis.value = parseFloat(json.result.confidence);
 		}
 	}
 	http.send(params);
@@ -54,12 +31,8 @@ function read_image_text(input){
 			canvas.height = img.clientHeight;
 			context.drawImage(img, 0, 0);
 			var letters = OCRAD(context);
-			letters = letters.trim().toLowerCase();
-			var analysis = document.getElementById('analysis');
-			if(current_name.toLowerCase().trim() == letters){
-				analysis.value = parseFloat(analysis.value) + 33.0;
-			}
-			else analysis.value = parseFloat(analysis.value) + 10.0;
+			letters = letters.trim();
+			window.alert(current_id);
 		};
 		reader.readAsDataURL(input.files[0]);
 	};

@@ -64,11 +64,7 @@
             <li><a href = "#" onclick="popup('add_rest.html','Add Restaurant',400,400);">Add Restaurant</a></li>
             <li><a href = "#" onclick="popup('remove_rest.html','Remove Restaurant',200,200);">Remove Restaurant</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href = "#" onclick="popup('add_review.html','Add Review',1200,600);">Add Review</a></li>
-            <li><a href = "#" onclick="popup('remove_review.html','Add Review',400,400);">Remove Review</a></li>
-			<li><a href = "#" onclick="sentiment_analysis();">Test</a></li>
-          </ul>
+     
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="sub-header">Rowland Heights Restaurant List</h2>
@@ -79,7 +75,7 @@
                   <th>ID</th>
                   <th>Name</th>
                   <th>Rating</th>
-                  <th>Tags</th>
+				  <th>Tags</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,8 +94,9 @@
 						$rating = $average['AverageReview'];
 						if($rating === null) $rating = 0;
 						$id = $row['ID'];
+						$name = $row['Name'];
 						echo "<tr><td>" . $id . "</td>
-							<td>". '<a href="restaurant.php?id='.urlencode($id).'">' . $row['Name'] . "</a></td>
+							<td>". '<a href="restaurant.php?id='.urlencode($id).'&name='.urlencode($name).'">' . $name . "</a></td>
 							<td>" . number_format((float)$rating, 1, '.', '') . "</td>
 							<td></td></tr>";
 					}
