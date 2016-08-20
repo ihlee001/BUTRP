@@ -3,12 +3,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<form action="add_review.php" method="post" onsubmit="window.opener.location.reload();">
-		Restaurant ID:<br>
-		<input type="number" name="restid" id="restid"><br><br>
+		<input type="hidden" name="restid" id="restid">
 		User ID:<br>
 		<input type="number" name="userid"><br><br>
 		Rating:<br>
-		<input type="number" name="rating"><br><br>
+		<input type="number" name="rating" min="1" max="5" id="rating" value="3"><br><br>
 		Review:<br>
 		<textarea id="texts" name="review" rows="20" cols="70"></textarea><br>
 		<button id = "button" type="button" onclick="sentiment_analysis(this)" value="null">Rate Review</button><br><br>
@@ -18,7 +17,8 @@
 		<input type="submit"><br><br>
 		<img id="receipt" src="" >
 	</form>
-
 	<script src="js/scripts.js"></script>
+	<script>set_id();</script>
+	<script>set_score();</script>
 	<script src="js/ocrad.js"></script>
 </html>

@@ -36,8 +36,9 @@
 	<?php 
 		$id = $_GET['id'];
 		$name = $_GET['name'];
+		$lat = $_GET['lat'];
+		$long = $_GET['long'];
 	?>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -67,7 +68,7 @@
             <li class="active"><a href="index.php">Overview <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href = "#" onclick="popup_review('add_review.html','Add Review',1200,600,'<?php echo $id; ?>', '<?php echo $name; ?>');">Add Review</a></li>
+            <li><a href = "#" onclick="popup_review('add_review.html','Add Review',1200,600,'<?php echo $id; ?>', '<?php echo $name; ?>','<?php echo $lat; ?>', '<?php echo $long; ?>');">Add Review</a></li>
             <li><a href = "#" onclick="popup('remove_review.html','Add Review',400,400);">Remove Review</a></li>
           </ul>
         </div>
