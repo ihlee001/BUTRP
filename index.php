@@ -50,6 +50,7 @@
           <ul class="nav navbar-nav navbar-right"><br>
             <li><font color="white">Filter Setting </font><input type="number" min="0" max="99" value="0" id="filter"></li>
 			<li><button type="button" onclick="apply_filter();">Apply</li>
+			<li>&nbsp&&nbsp&</li>
           </ul>
 <!--          <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

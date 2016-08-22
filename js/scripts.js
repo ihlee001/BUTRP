@@ -42,9 +42,6 @@ function popup_review(url, title, w, h, id, name, lat, longi) {
 	var lat1 = parseFloat(lat);
 	var lon1 = parseFloat(longi);
 	var score = 0;
-	lat1 = 34.1;
-	lon1 = 34.1;
-	
 	var R = 6371; // km
 	var dLat = toRad(lat2-lat1);
 	var dLon = toRad(lon2-lon1);
@@ -55,7 +52,6 @@ function popup_review(url, title, w, h, id, name, lat, longi) {
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
 	if(d < 0.1) score = 33; 
-	
 	localStorage.setItem("current_score", score);
 	return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
 } 
@@ -140,12 +136,15 @@ function read_image_text(input){
 			context.drawImage(img, 0, 0);
 			var letters = OCRAD(context);
 			letters = letters.trim().toLowerCase();
-			window.alert(letters);
 			var analysis = document.getElementById('analysis');
-			if(letters.contains(current_name.toLowerCase().trim())){
-				analysis.value = parseFloat(analysis.value) + 33.0;
+			var strIndex = letters.indexOf(current_name.toLowerCase().trim());
+			if(strIndex == -1){
+				analysis.value = parseFloat(analysis.value) + 10.0;
 			}
-			else analysis.value = parseFloat(analysis.value) + 10.0;
+			else{
+				analysis.value = parseFloat(analysis.value) + 33.0;
+			} 
+			window.alert(analysis.value);
 		};
 		reader.readAsDataURL(input.files[0]);
 	};

@@ -50,6 +50,7 @@
           </button>
           <a class="navbar-brand" href="index.php" >Bring Up The Review Please</a>
         </div>
+		<!--
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Filter Setting</a></li>
@@ -58,6 +59,7 @@
             <input type="text" class="form-control" placeholder="Search...">
           </form>
         </div>
+		-->
       </div>
     </nav>
 
@@ -78,11 +80,11 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Restaurant ID</th>
                   <th>User ID</th>
                   <th>Rating</th>
 				  <th>Confidence</th>
                   <th>Review</th>
+				  <!--<th><?php echo $long; ?></th>-->
                 </tr>
               </thead>
               <tbody>
@@ -95,7 +97,7 @@
 					$results = mysqli_query($mysqli, $query);
 					
 					while ($row = mysqli_fetch_array($results)) {
-						echo "<tr><td>" . $row['RestaurantID'] . "</td>
+						echo "<tr>
 							<td>" . $row['UserID'] . "</td>
 							<td>" . $row['Rating'] . "</td>
 							<td>" . $row['Confidence'] . "</td>
